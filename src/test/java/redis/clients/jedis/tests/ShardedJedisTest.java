@@ -140,7 +140,9 @@ public class ShardedJedisTest extends Assert {
         assertNotSame(s5, s6);
     }
 
-    @Test
+    //TODO remove deprecated method usage
+    @SuppressWarnings("deprecation")
+	@Test
     public void shardedPipeline() {
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
         shards.add(new JedisShardInfo(redis1.host, redis1.port));

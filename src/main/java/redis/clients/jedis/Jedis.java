@@ -2891,7 +2891,9 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
      * 
      * @return
      */
-    public List<Map<String, String>> sentinelMasters() {
+    //TODO remove rawtype usage
+    @SuppressWarnings("rawtypes")
+	public List<Map<String, String>> sentinelMasters() {
 	client.sentinel(Protocol.SENTINEL_MASTERS);
 	final List<Object> reply = client.getObjectMultiBulkReply();
 
@@ -2968,7 +2970,9 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
      * @param masterName
      * @return
      */
-    public List<Map<String, String>> sentinelSlaves(String masterName) {
+    //TODO remove rawtype usage
+    @SuppressWarnings("rawtypes")
+	public List<Map<String, String>> sentinelSlaves(String masterName) {
 	client.sentinel(Protocol.SENTINEL_SLAVES, masterName);
 	final List<Object> reply = client.getObjectMultiBulkReply();
 
@@ -2991,7 +2995,9 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
      * 
      * @return Long followed by the String (runid)
      */
-    public List<? extends Object> sentinelIsMasterDownByAddr(String host,
+    //TODO remove unchecked cast
+    @SuppressWarnings("unchecked")
+	public List<? extends Object> sentinelIsMasterDownByAddr(String host,
 	    int port) {
 	client.sentinel(Protocol.SENTINEL_IS_MASTER_DOWN_BY_ADDR, host, port);
 	final List<Object> reply = client.getObjectMultiBulkReply();

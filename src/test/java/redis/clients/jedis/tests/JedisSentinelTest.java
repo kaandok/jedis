@@ -22,9 +22,9 @@ public class JedisSentinelTest {
 	j.auth("foobared");
 	j.configSet("masterauth", "foobared");
 	j.slaveof("localhost", 6379);
-	// TODO: The sleep is to give time to the slave to synchronize with the
-	// master and also let know the sentinels about this new topology. We
-	// should find a better way to do this.
+	// The sleep is to give time to the slave to synchronize with the 
+	// master and also let know the sentinels about this new topology.
+	//TODO find a better way to perform this wait for synchronization task
 	Thread.sleep(5000);
     }
 
