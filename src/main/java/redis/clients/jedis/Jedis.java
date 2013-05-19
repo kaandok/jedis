@@ -2792,9 +2792,10 @@ public class Jedis extends BinaryJedis implements JedisCommands,
 		for (Object bin : list) {
 			if (bin instanceof List<?>) {
 				listResult.add(processListResult((List<?>) bin));
+			} else if (bin instanceof byte[]) {
+				listResult.add(bin == null ? null : SafeEncoder.encode((byte[]) bin));
 			} else {
-				listResult.add(bin == null ? null : SafeEncoder
-						.encode((byte[]) bin));
+				listResult.add(bin);
 			}
 		}
 		return listResult;
